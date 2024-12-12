@@ -1,5 +1,7 @@
 export function Blog(){
     return (
-        <h1>BLOG</h1>
+        <>
+            <h1>BLOG</h1>
+        </>
     )
 }
