@@ -17,6 +17,10 @@ export const Publication = styled.div`
   flex-direction: column;
   gap: 1.25rem;
 
+  border: 2px solid transparent;
+
+  cursor: pointer;
+
   > header {
     display: flex;
     align-items: start;
@@ -43,5 +47,9 @@ export const Publication = styled.div`
     font-size: 1rem;
     line-height: 160%;
     color: ${(props) => props.theme['base-text']};
+  }
+
+  &:hover {
+    border-color: ${(props) => props.theme['base-label']};
   }
 `

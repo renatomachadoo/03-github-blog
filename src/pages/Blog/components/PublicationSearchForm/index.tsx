@@ -16,16 +16,20 @@ const searchFormSchema = z.object({
 type SearchFormInputs = z.infer<typeof searchFormSchema>
 
 export function PublicationSearchForm() {
-  const issuesAmount = useContextSelector(IssuesContext, (context) => {
-    return context.issuesAmount
-  })
+  const { issuesAmount, fetchIssues } = useContextSelector(
+    IssuesContext,
+    (context) => ({
+      issuesAmount: context.issuesAmount,
+      fetchIssues: context.fetchIssues,
+    }),
+  )
 
   const { register, handleSubmit } = useForm<SearchFormInputs>({
     resolver: zodResolver(searchFormSchema),
   })
 
   async function handleSearchTransactions(data: SearchFormInputs) {
-    console.log(data.query)
+    fetchIssues(data.query)
   }
 
   return (

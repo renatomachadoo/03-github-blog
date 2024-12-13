@@ -33,7 +33,7 @@ export function IssuesProvider({ children }: IssuesProviderProps) {
     let fetchUrl = '/search/issues?q=repo:renatomachadoo/03-github-blog'
 
     if (query) {
-      fetchUrl = `/search/issues?q=${query}repo:renatomachadoo/03-github-blog`
+      fetchUrl = `/search/issues?q=${query}%20repo:renatomachadoo/03-github-blog`
     }
 
     const response = await api.get(fetchUrl)
@@ -44,7 +44,7 @@ export function IssuesProvider({ children }: IssuesProviderProps) {
 
   useEffect(() => {
     fetchIssues()
-  })
+  }, [fetchIssues])
 
   return (
     <IssuesContext.Provider
