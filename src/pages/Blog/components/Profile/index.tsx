@@ -9,36 +9,49 @@ import {
 
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
 
-export function Profile() {
+interface UserInfoProps {
+  login: string
+  company: string
+  followers: number
+  name: string
+  html_url: string
+  avatar_url: string
+  bio: string
+}
+
+interface ProfileProps {
+  userInfo: UserInfoProps | null
+}
+
+export function Profile({ userInfo }: ProfileProps) {
   return (
     <ProfileContainer>
-      <Avatar src="https://thumbs.dreamstime.com/b/logotipo-de-benfica-125014289.jpg" />
+      <Avatar src={userInfo?.avatar_url} />
       <main>
         <header>
-          <h3>Cameron Williamson</h3>
-          <a target="_blank" href="youtube.com">
+          <h3>{userInfo?.name}</h3>
+          <a target="_blank" href={userInfo?.html_url} rel="noreferrer">
             GITHUB
             <FontAwesomeIcon size="xs" icon={faArrowUpRightFromSquare} />
           </a>
         </header>
-        <p>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Numquam vero
-          ullam, veniam similique commodi earum autem eaque ipsam, ipsa sint
-          corrupti pariatur expedita cumque quidem non modi. Cum, dignissimos
-          deleniti.
-        </p>
+        <p>{userInfo?.bio || 'Este utilizador ainda não tem uma biografia'}</p>
         <footer>
           <div>
             <FontAwesomeIcon size="lg" icon={faGithub} />
-            <span>Renato Machado</span>
+            <span>{userInfo?.name}</span>
           </div>
           <div>
             <FontAwesomeIcon size="lg" icon={faBuilding} />
-            <span>Rocketseat</span>
+            <span>{userInfo?.company || 'Nenhuma'}</span>
           </div>
           <div>
             <FontAwesomeIcon size="lg" icon={faUserGroup} />
-            <span>32 seguidores</span>
+            <span>
+              {userInfo?.followers === 1
+                ? userInfo?.followers + ' seguidor'
+                : userInfo?.followers + ' seguidores'}
+            </span>
           </div>
         </footer>
       </main>
