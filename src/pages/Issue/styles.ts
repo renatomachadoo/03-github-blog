@@ -76,3 +76,7 @@ export const IssueHeader = styled.header`
     }
   }
 `
+
+export const IssueBody = styled.div`
+  padding: 2.5rem 2rem;
+`

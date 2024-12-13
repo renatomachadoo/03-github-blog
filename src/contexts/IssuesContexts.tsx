@@ -4,6 +4,10 @@ import { createContext } from 'use-context-selector'
 
 import { api } from '../lib/axios'
 
+interface IssueUser {
+  login: string
+}
+
 interface Issue {
   id: number
   number: number
@@ -11,6 +15,8 @@ interface Issue {
   created_at: string
   body: string
   url: string
+  comments: number
+  user: IssueUser
 }
 
 interface IssueContextType {
