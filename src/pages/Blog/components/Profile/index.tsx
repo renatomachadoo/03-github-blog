@@ -39,7 +39,7 @@ export function Profile({ userInfo }: ProfileProps) {
         <footer>
           <div>
             <FontAwesomeIcon size="lg" icon={faGithub} />
-            <span>{userInfo?.name}</span>
+            <span>{userInfo?.login}</span>
           </div>
           <div>
             <FontAwesomeIcon size="lg" icon={faBuilding} />

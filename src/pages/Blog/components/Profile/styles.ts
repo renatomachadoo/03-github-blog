@@ -42,6 +42,7 @@ export const ProfileContainer = styled.div`
         text-decoration: none;
 
         border-bottom: 1px solid transparent;
+        cursor: pointer;
 
         &:hover {
           border-color: ${(props) => props.theme.blue};

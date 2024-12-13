@@ -1,46 +1,31 @@
 import { PublicationsContainer, Publication } from './styles'
+import { IssuesContext } from '../../../../contexts/IssuesContexts'
+import { useContextSelector } from 'use-context-selector'
+import { formatDistanceToNow } from 'date-fns'
+import { pt } from 'date-fns/locale'
 
 export function Publications() {
+  const issues = useContextSelector(IssuesContext, (context) => {
+    return context.issues
+  })
+
   return (
     <PublicationsContainer>
-      <Publication>
-        <header>
-          <span>JavaScript data types and data structures</span>
-          <small>Há 1 dia</small>
-        </header>
-        <p>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nobis
-          ratione laborum ipsum aliquid soluta quam amet similique commodi!
-          Maxime voluptate aperiam quia obcaecati qui expedita accusantium
-          ratione cum quas! Nemo.
-        </p>
-      </Publication>
-
-      <Publication>
-        <header>
-          <span>JavaScript data types and data structures</span>
-          <small>Há 1 dia</small>
-        </header>
-        <p>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nobis
-          ratione laborum ipsum aliquid soluta quam amet similique commodi!
-          Maxime voluptate aperiam quia obcaecati qui expedita accusantium
-          ratione cum quas! Nemo.
-        </p>
-      </Publication>
-
-      <Publication>
-        <header>
-          <span>JavaScript data types and data structures</span>
-          <small>Há 1 dia</small>
-        </header>
-        <p>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nobis
-          ratione laborum ipsum aliquid soluta quam amet similique commodi!
-          Maxime voluptate aperiam quia obcaecati qui expedita accusantium
-          ratione cum quas! Nemo.
-        </p>
-      </Publication>
+      {issues.map((issue) => {
+        return (
+          <Publication key={issue.id}>
+            <header>
+              <span>{issue.title}</span>
+              <small>
+                {formatDistanceToNow(new Date(issue.created_at), {
+                  locale: pt,
+                })}
+              </small>
+            </header>
+            <p>{issue.body}</p>
+          </Publication>
+        )
+      })}
     </PublicationsContainer>
   )
 }

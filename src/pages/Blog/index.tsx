@@ -4,7 +4,6 @@ import { PublicationSearchForm } from './components/PublicationSearchForm'
 import { Publications } from './components/Publications'
 import { useEffect, useState } from 'react'
 import { api } from '../../lib/axios'
-
 interface UserInfo {
   login: string
   company: string
